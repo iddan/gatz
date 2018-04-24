@@ -1,5 +1,6 @@
 {
   "name": "gatz",
+  "description": "Static site generator",
   "bin": "cli.js",
   "dependencies": {
     "commander": "^2.15.1",
