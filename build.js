@@ -5,6 +5,7 @@ const marked = require("marked");
 const fm = require("front-matter");
 const Handlebars = require("handlebars");
 const HTMLMinifier = require("html-minifier");
+const emoji = require('node-emoji');
 const { assureDir, fromPairs } = require("./util");
 
 const readdir = promisify(fs.readdir);
@@ -95,7 +96,7 @@ module.exports = async function build(directory) {
       const pagePath = path.join(pagesDir, page);
       const pageRawContent = await readFile(pagePath, { encoding: "utf-8" });
       const { body, attributes } = fm(pageRawContent);
-      const content = marked.parse(body, { gfm: true });
+      const content = emoji.emojify(marked.parse(body, { gfm: true }));
       // assume layout
       const layout =
         layouts[attributes.layout] ||
