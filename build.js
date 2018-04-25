@@ -119,5 +119,5 @@ module.exports = async function build(directory) {
       );
       console.info("Built", builtPageFileName);
     })
-  ).catch(console.error);
+  );
 };
